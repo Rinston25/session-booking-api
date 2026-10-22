@@ -1,0 +1,12 @@
+{
+  "name": "session-booking-api",
+  "version": "1.0.0",
+  "description": "REST API for booking sessions with teachers (Node.js, TypeScript, Express, MongoDB, Mongoose)",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "license": "MIT"
+}
