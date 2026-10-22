@@ -13,9 +13,7 @@
           "const d = new Date(); d.setUTCDate(d.getUTCDate() + 1); d.setUTCHours(10, 0, 0, 0);",
           "pm.collectionVariables.set('startTime', d.toISOString());",
           "pm.collectionVariables.set('endTime', new Date(d.getTime() + 3600000).toISOString());",
-          "pm.collectionVariables.set('dateTimestamp', String(d.getTime()));",
-          "pm.collectionVariables.set('userEmail', 'user' + Date.now() + '@example.com');",
-          "pm.collectionVariables.set('teacherEmail', 'teacher' + Date.now() + '@example.com');"
+          "pm.collectionVariables.set('dateTimestamp', String(d.getTime()));"
         ]
       }
     }
@@ -97,6 +95,16 @@
         {
           "name": "Create teacher",
           "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Fresh email each run; the duplicate test reuses this one",
+                  "pm.collectionVariables.set('teacherEmail', 'teacher' + Date.now() + '@example.com');"
+                ]
+              }
+            },
             {
               "listen": "test",
               "script": {
@@ -183,6 +191,16 @@
         {
           "name": "Create user",
           "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Fresh email each run; the duplicate test reuses this one",
+                  "pm.collectionVariables.set('userEmail', 'user' + Date.now() + '@example.com');"
+                ]
+              }
+            },
             {
               "listen": "test",
               "script": {
